@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 import pandas as pd
 
-wb = load_workbook(filename='input/stateResults/NewHampshire.xlsx')
+wb = load_workbook(filename='input/state_results/NewHampshire.xlsx')
 
 dem_ws = wb["D by County"]
 democratic_data = []
@@ -29,6 +29,6 @@ for i in range(len(new_hampshire_data)):
     party_county_votes = new_hampshire_data[(new_hampshire_data["Party"]==party) & (new_hampshire_data["County"]==county)]["Votes"].sum()
     new_hampshire_data.ix[i, "FractionVotes"] = new_hampshire_data.ix[i, "Votes"]/party_county_votes
 
-new_hampshire_data["StateName"] = "New Hampshire"
+new_hampshire_data["State"] = "New Hampshire"
 new_hampshire_data["StateAbbreviation"] = "NH"
-new_hampshire_data.to_csv("working/stateResults/NewHampshire.csv", index=False)
+new_hampshire_data.to_csv("working/state_results/NewHampshire.csv", index=False)

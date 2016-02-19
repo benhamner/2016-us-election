@@ -1,7 +1,7 @@
 .separator ","
 
 CREATE TABLE PrimaryResults (
-    StateName TEXT,
+    State TEXT,
     StateAbbreviation TEXT,
     County TEXT,
     Party TEXT,

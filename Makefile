@@ -10,7 +10,7 @@ input/county_shapefiles/.sentinel:
 	mkdir -p input/county_shapefiles
 	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_county_500k.zip -o input/county_shapefiles/500k.zip
 	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_county_5m.zip -o input/county_shapefiles/5m.zip
-	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_county_5m.zip -o input/county_shapefiles/20m.zip
+	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_county_20m.zip -o input/county_shapefiles/20m.zip
 	cd input/county_shapefiles; unzip \*.zip
 	touch input/county_shapefiles/.sentinel
 
@@ -40,25 +40,22 @@ output/database.sqlite: working/no_header/PrimaryResults.csv
 	sqlite3 -echo $@ < src/import.sql
 db: output/database.sqlite
 
-output/raw/.sentinel:
-	mkdir -p output/raw
-	cp -r input/2014 output/raw/2014
-	cp -r input/2015 output/raw/2015
-	cp -r input/2016 output/raw/2016
-	rm output/raw/2014/*.zip
-	rm output/raw/2015/*.zip
-	rm output/raw/2016/*.zip
-	touch output/raw/.sentinel
-output-raw: output/raw/.sentinel
+output/county_shapefiles/cb_2014_us_county_500k.shp: input/county_shapefiles/.sentinel
+	mkdir -p output/county_shapefiles
+	cp -r input/county_shapefiles output/
+	rm output/county_shapefiles/*.zip
+	rm output/county_shapefiles/.sentinel
 
-output/hashes.txt: output/database.sqlite
+output/hashes.txt: output/database.sqlite output/county_shapefiles/cb_2014_us_county_500k.shp
 	-rm output/hashes.txt
 	echo "Current git commit:" >> output/hashes.txt
 	git rev-parse HEAD >> output/hashes.txt
 	echo "\nCurrent input/ouput md5 hashes:" >> output/hashes.txt
 	md5 output/*.csv >> output/hashes.txt
 	md5 output/*.sqlite >> output/hashes.txt
-	md5 input/* >> output/hashes.txt
+	md5 output/county_shapefiles/* >> output/hashes.txt
+	md5 input/state_results/* >> output/hashes.txt
+	md5 input/county_shapefiles/* >> output/hashes.txt
 hashes: output/hashes.txt
 
 release: output/hashes.txt
@@ -66,7 +63,7 @@ release: output/hashes.txt
 	zip -r -X output/2016-presidential-election-`date -u +'%Y-%m-%d-%H-%M-%S'` 2016-presidential-election/*
 	rm -rf 2016-presidential-election
 
-all: db release
+all: release
 
 clean:
 	rm -rf working
