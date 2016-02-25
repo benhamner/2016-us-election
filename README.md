@@ -37,7 +37,8 @@ The 2016 US Election dataset contains several main files and folders at the mome
 
 ## Original Data Sources
 
- - [Primary Results from CNN](http://www.cnn.com/election/primaries/counties/nh/Dem)
+ - [Primary Results from CNN](http://www.cnn.com/election/primaries/counties/ia/Dem)
+ - [New Hampshire County-Level Results](https://numeracy.co/projects/2n9KPEk6ShS)
  - [County Shapefiles](https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html)
  - [County QuickFacts](http://quickfacts.census.gov/qfd/download_data.html)
 
