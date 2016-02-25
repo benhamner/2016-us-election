@@ -1,20 +1,12 @@
 input/state_results/.sentinel:
-	curl http://data.cnn.com/ELECTION/2016primary/IA/county/S.json -o iowa_republican.json
-	curl http://data.cnn.com/ELECTION/2016primary/IA/county/E.json -o iowa_democrat.json
-	curl http://data.cnn.com/ELECTION/2016primary/NH/county/S.json -o new_hampshire_republican.json
-	curl http://data.cnn.com/ELECTION/2016primary/NH/county/E.json -o new_hampshire_democrat.json
-	curl http://data.cnn.com/ELECTION/2016primary/NV/county/S.json -o nevada_republican.json
-	curl http://data.cnn.com/ELECTION/2016primary/NV/county/E.json -o nevada_democrat.json
-	curl http://data.cnn.com/ELECTION/2016primary/SC/county/S.json -o south_carolina_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/IA/county/S.json -o input/state_results/iowa_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/IA/county/E.json -o input/state_results/iowa_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/NH/county/R.json -o input/state_results/new_hampshire_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/NH/county/D.json -o input/state_results/new_hampshire_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/NV/county/S.json -o input/state_results/nevada_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/NV/county/E.json -o input/state_results/nevada_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/SC/county/R.json -o input/state_results/south_carolina_republican.json
 	touch input/state_results/.sentinel
-
-input/state_results/iowa.xlsx:
-	mkdir -p input/state_results
-	curl http://overflow.solutions/wp-content/uploads/2016/02/2016-Iowa-Caucus-Results-Dem-and-Rep-2-2-2016.xlsx -o input/state_results/iowa.xlsx
-
-input/state_results/new_hampshire.xlsx:
-	mkdir -p input/state_results
-	curl https://numeracy.co/projects/2n9KPEk6ShS/versions/2?format=xlsx -o input/state_results/new_hampshire.xlsx
 
 input/county_shapefiles/.sentinel:
 	mkdir -p input/county_shapefiles
@@ -31,23 +23,9 @@ input/county_facts/.sentinel:
 	curl http://quickfacts.census.gov/qfd/download/DataDict.txt -o input/county_facts/dictionary.txt
 	touch input/county_facts/.sentinel
 
-input: input/county_shapefiles/.sentinel input/county_facts/.sentinel input/state_results/.sentinel input/state_results/iowa.xlsx input/state_results/new_hampshire.xlsx
+input: input/county_shapefiles/.sentinel input/county_facts/.sentinel input/state_results/.sentinel
 
-working/state_results/iowa.csv: input/state_results/iowa.xlsx
-	mkdir -p working/state_results
-	python src/iowa.py
-iowa: working/state_results/iowa.csv
-
-working/state_results/new_hampshire.csv: input/state_results/new_hampshire.xlsx
-	mkdir -p working/state_results
-	python src/new_hampshire.py
-new-hampshire: working/state_results/new_hampshire.csv
-
-working/state_results/other_states.csv: input/state_results/south_carolina_republican.json input/state_results/nevada_republican.json input/state_results/nevada_democrat.json
-	mkdir -p working/state_results
-	python src/other_states.py
-
-output/primary_results.csv: working/state_results/iowa.csv working/state_results/new_hampshire.csv working/state_results/other_states.csv
+output/primary_results.csv: input/state_results/.sentinel
 	mkdir -p output
 	python src/primary_results.py
 primary-results: output/primary_results.csv

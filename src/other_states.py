@@ -10,21 +10,26 @@ def json_to_dataframe(data):
                         for candidate in county["race"]["candidates"]],
                         columns=["county", "candidate", "votes", "fraction_votes"])
 
-sc_rep = json_to_dataframe(json.loads(open("input/state_results/south_carolina_republican.json").read()))
-sc_rep["state"] = "South Carolina"
-sc_rep["state_abbreviation"] = "SC"
-sc_rep["party"] = "Republican"
+completed_races = [["Iowa", "IA", "Republican"],
+                   ["Iowa", "IA", "Democrat"],
+                   ["New Hampshire", "NH", "Republican"],
+                   ["New Hampshire", "NH", "Democrat"],
+                   ["Nevada", "NV", "Republican"],
+                   ["Nevada", "NV", "Democrat"],
+                   ["South Carolina", "SC", "Republican"]]
 
-nv_rep = json_to_dataframe(json.loads(open("input/state_results/nevada_republican.json").read()))
-nv_rep["state"] = "Nevada"
-nv_rep["state_abbreviation"] = "NV"
-nv_rep["party"] = "Republican"
+results = []
 
-nv_dem = json_to_dataframe(json.loads(open("input/state_results/nevada_democrat.json").read()))
-nv_dem["state"] = "Nevada"
-nv_dem["state_abbreviation"] = "NV"
-nv_dem["party"] = "Democrat"
+for race in completed_races:
+    file_name = "_".join([x.lower() for x in race[0].split(" ")]) + "_" + race[2].lower() + ".json"
+    print(file_name)
+    race_data = json_to_dataframe(json.loads(open("input/state_results/" + file_name).read()))
+    race_data["state"] = race[0]
+    race_data["state_abbreviation"] = race[1]
+    race_data["party"] = race[2]
+    results.append(race_data)
 
-other_data = pd.concat([sc_rep, nv_rep, nv_dem], ignore_index=True)
+
+other_data = pd.concat(results, ignore_index=True)
 
 other_data.to_csv("working/state_results/other_states.csv", index=False)
