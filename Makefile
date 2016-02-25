@@ -26,7 +26,11 @@ working/state_results/NewHampshire.csv: input/state_results/NewHampshire.xlsx
 	python src/new_hampshire.py
 new-hampshire: working/state_results/NewHampshire.csv
 
-output/PrimaryResults.csv: working/state_results/Iowa.csv working/state_results/NewHampshire.csv
+working/state_results/OtherStates.csv: input/state_results/SouthCarolinaRepublican.json input/state_results/NevadaRepublican.json input/state_results/NevadaDemocrat.json
+	mkdir -p working/state_results
+	python src/other_states.py
+
+output/PrimaryResults.csv: working/state_results/Iowa.csv working/state_results/NewHampshire.csv working/state_results/OtherStates.csv
 	mkdir -p output
 	python src/primary_results.py
 primary-results: output/PrimaryResults.csv

@@ -38,3 +38,11 @@ The 2016 US Election dataset contains several main files and folders at the mome
  - [Iowa County-Level Results](http://overflow.solutions/datasets/2016-iowa-caucus-data-sets/)
  - [New Hampshire County-Level Results](https://numeracy.co/projects/2n9KPEk6ShS)
  - [County Shapefiles](https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html)
+
+## To consider adding
+
+ - http://www.presidency.ucsb.edu/2016_election.php
+
+## Notes
+
+React command: `var data=[]; for (i=0;i<$r.props.children.length;i++) { data.push($r.props.children[i].props);}; JSON.stringify(data)`
