@@ -22,7 +22,7 @@ Do you think that we should augment this dataset with more data sources? Submit 
 
 The 2016 US Election dataset contains several main files and folders at the moment. You may download the entire archive via the "Download Data" link at the top of the page, or interact with the data in Kaggle Scripts through the `../input` directory.
 
- - **[PrimaryResults.csv](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/primary-results-sample-data)**: main primary results file
+ - **[primary_results.csv](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/primary-results-sample-data)**: main primary results file
    - State: state where the primary or caucus was held
    - StateAbbreviation: two letter state abbreviation
    - County: county where the results come from
@@ -30,7 +30,9 @@ The 2016 US Election dataset contains several main files and folders at the mome
    - Candidate: name of the candidate
    - Votes: number of votes the candidate received in the corresponding state and county (may be missing)
    - FractionVotes: fraction of votes the president received in the corresponding state, county, and primary
- - **database.sqlite**: SQLite database containing the PrimaryResults table with identical data and schema
+ - **county_facts.csv**: demographic data on counties from US census
+ - **county_facts_dictionary.csv**: description of the columns in county_facts
+ - **database.sqlite**: SQLite database containing the primary_results, county_facts, and county_facts_dictionary tables with identical data and schema
  - **county_shapefiles**: directory containing county shapefiles at three different resolutions for mapping
 
 ## Original Data Sources
