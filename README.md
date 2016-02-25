@@ -35,9 +35,9 @@ The 2016 US Election dataset contains several main files and folders at the mome
 
 ## Original Data Sources
 
- - [Iowa County-Level Results](http://overflow.solutions/datasets/2016-iowa-caucus-data-sets/)
- - [New Hampshire County-Level Results](https://numeracy.co/projects/2n9KPEk6ShS)
+ - [Primary Results from CNN](http://www.cnn.com/election/primaries/counties/nh/Dem)
  - [County Shapefiles](https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html)
+ - [County QuickFacts](http://quickfacts.census.gov/qfd/download_data.html)
 
 ## To consider adding
 
