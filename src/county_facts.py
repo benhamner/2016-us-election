@@ -11,6 +11,7 @@ fips_county = [[line[:5],
                for line in fips_county]
 fips_county = pd.DataFrame(fips_county, columns=["fips", "area_name", "state_abbreviation"])
 county_facts = fips_county.merge(county_facts, on="fips")
+county_facts["fips"] = county_facts["fips"].astype(np.int64)
 
 county_facts.to_csv("output/county_facts.csv", index=False)
 

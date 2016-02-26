@@ -24,9 +24,12 @@ input/county_facts/.sentinel:
 	curl http://quickfacts.census.gov/qfd/download/DataDict.txt -o input/county_facts/dictionary.txt
 	touch input/county_facts/.sentinel
 
-input: input/county_shapefiles/.sentinel input/county_facts/.sentinel input/state_results/.sentinel
+input/county_fips.csv:
+	Rscript -e 'library(maps);library(readr);data(county.fips);write_csv(county.fips, "input/county_fips.csv")'
 
-output/primary_results.csv: input/state_results/.sentinel
+input: input/county_shapefiles/.sentinel input/county_facts/.sentinel input/state_results/.sentinel input/county_fips.csv
+
+output/primary_results.csv: input/state_results/.sentinel input/county_fips.csv
 	mkdir -p output
 	python src/primary_results.py
 primary-results: output/primary_results.csv

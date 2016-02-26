@@ -4,6 +4,7 @@ CREATE TABLE primary_results (
     state TEXT,
     state_abbreviation TEXT,
     county TEXT,
+    fips INTEGER,
     party TEXT,
     candidate TEXT,
     votes INTEGER,

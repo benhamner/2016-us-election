@@ -65,6 +65,11 @@ new_hampshire_data["state_abbreviation"] = "NH"
 new_hampshire_data = new_hampshire_data.rename(columns={"Votes": "votes", "County": "county", "Candidate": "candidate"})
 results.append(new_hampshire_data)
 
+county_fips = pd.read_csv("input/county_fips.csv")
+
 primary_results = pd.concat(results, ignore_index=True)
-primary_results = primary_results[["state","state_abbreviation","county","party","candidate","votes","fraction_votes"]]
+primary_results["polyname"] = [primary_results.ix[i, "state"].lower() + "," + primary_results.ix[i, "county"].lower()
+                               for i in range(len(primary_results))]
+primary_results = primary_results.merge(county_fips, on="polyname")
+primary_results = primary_results[["state","state_abbreviation","county","fips","party","candidate","votes","fraction_votes"]]
 primary_results.to_csv("output/primary_results.csv", index=False)
