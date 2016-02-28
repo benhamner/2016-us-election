@@ -4,9 +4,9 @@ This contains the code to clean and create the [2016 US Election](https://www.ka
 
 It requires Python 3, and you can re-create the data release by running `make all` from the root directory.
 
-[![nh-dem](https://www.kaggle.io/svf/162809/cf105fb56b206d457b5bde1a8e546365/New%20Hampshire_Democrat.png)](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/new-hampshire-democratic-primary-results)
+[![sc-rep](https://www.kaggle.io/svf/166413/03fc1f5985d4b7458794e813418f0bac/South%20Carolina_Republican.png)](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/sc-republican-primary-results)
 
-[![ia-rep](https://www.kaggle.io/svf/162801/87335e996f9415489f5088c670c34f29/Iowa_Republican.png)](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/iowa-republican-primary-results)
+[![nh-dem](https://www.kaggle.io/svf/162809/cf105fb56b206d457b5bde1a8e546365/New%20Hampshire_Democrat.png)](https://www.kaggle.com/benhamner/d/benhamner/2016-us-election/new-hampshire-democratic-primary-results)
 
 ## Exploration Ideas
 
