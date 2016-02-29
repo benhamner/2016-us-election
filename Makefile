@@ -6,6 +6,7 @@ input/state_results/.sentinel:
 	curl http://data.cnn.com/ELECTION/2016primary/NV/county/S.json -o input/state_results/nevada_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/NV/county/E.json -o input/state_results/nevada_democrat.json
 	curl http://data.cnn.com/ELECTION/2016primary/SC/county/R.json -o input/state_results/south_carolina_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/SC/county/D.json -o input/state_results/south_carolina_democrat.json
 	curl https://numeracy.co/projects/2n9KPEk6ShS/versions/2?format=xlsx -o input/state_results/new_hampshire.xlsx
 	touch input/state_results/.sentinel
 
