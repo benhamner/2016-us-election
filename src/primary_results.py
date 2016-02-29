@@ -18,7 +18,8 @@ completed_races = [["Iowa", "IA", "Republican"],
 #                   ["New Hampshire", "NH", "Democrat"],
                    ["Nevada", "NV", "Republican"],
                    ["Nevada", "NV", "Democrat"],
-                   ["South Carolina", "SC", "Republican"]]
+                   ["South Carolina", "SC", "Republican"],
+                   ["South Carolina", "SC", "Democrat"]]
 
 results = []
 
