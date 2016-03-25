@@ -135,3 +135,6 @@ all: release
 clean:
 	rm -rf working
 	rm -rf output
+
+clean-input-state-results:
+	rm -rf input/state_results
