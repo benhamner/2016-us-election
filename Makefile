@@ -1,4 +1,5 @@
 input/state_results/.sentinel:
+	mkdir -p input/state_results
 	curl http://data.cnn.com/ELECTION/2016primary/AL/county/R.json -o input/state_results/alabama_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/AL/county/D.json -o input/state_results/alabama_democrat.json
 	curl http://data.cnn.com/ELECTION/2016primary/AK/county/S.json -o input/state_results/alaska_republican.json
