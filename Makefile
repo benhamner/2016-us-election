@@ -1,12 +1,62 @@
 input/state_results/.sentinel:
+	curl http://data.cnn.com/ELECTION/2016primary/AL/county/R.json -o input/state_results/alabama_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/AL/county/D.json -o input/state_results/alabama_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/AK/county/S.json -o input/state_results/alaska_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/AZ/county/R.json -o input/state_results/arizona_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/AZ/county/D.json -o input/state_results/arizona_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/AR/county/R.json -o input/state_results/arkansas_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/AR/county/D.json -o input/state_results/arkansas_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/CO/county/E.json -o input/state_results/colorado_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/FL/county/R.json -o input/state_results/florida_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/FL/county/D.json -o input/state_results/florida_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/GA/county/R.json -o input/state_results/georgia_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/GA/county/D.json -o input/state_results/georgia_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/HI/county/S.json -o input/state_results/hawaii_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/IA/county/S.json -o input/state_results/iowa_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/IA/county/E.json -o input/state_results/iowa_democrat.json
-	curl http://data.cnn.com/ELECTION/2016primary/NH/county/R.json -o input/state_results/new_hampshire_republican.json
-	curl http://data.cnn.com/ELECTION/2016primary/NH/county/D.json -o input/state_results/new_hampshire_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/ID/county/R.json -o input/state_results/idaho_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/ID/county/E.json -o input/state_results/idaho_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/IL/county/R.json -o input/state_results/illinois_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/IL/county/D.json -o input/state_results/illinois_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/KS/county/S.json -o input/state_results/kansas_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/KS/county/E.json -o input/state_results/kansas_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/KY/county/S.json -o input/state_results/kentucky_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/LA/county/R.json -o input/state_results/louisiana_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/LA/county/D.json -o input/state_results/louisiana_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/ME/county/S.json -o input/state_results/maine_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/ME/county/E.json -o input/state_results/maine_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/MA/county/R.json -o input/state_results/massachusetts_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/MA/county/D.json -o input/state_results/massachusetts_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/MI/county/R.json -o input/state_results/michigan_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/MI/county/D.json -o input/state_results/michigan_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/MS/county/R.json -o input/state_results/mississippi_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/MS/county/D.json -o input/state_results/mississippi_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/MO/county/R.json -o input/state_results/missouri_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/MO/county/D.json -o input/state_results/missouri_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/NE/county/E.json -o input/state_results/nebraska_democrat.json
 	curl http://data.cnn.com/ELECTION/2016primary/NV/county/S.json -o input/state_results/nevada_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/NV/county/E.json -o input/state_results/nevada_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/NH/county/R.json -o input/state_results/new_hampshire_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/NH/county/D.json -o input/state_results/new_hampshire_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/NC/county/R.json -o input/state_results/north_carolina_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/NC/county/D.json -o input/state_results/north_carolina_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/OH/county/R.json -o input/state_results/ohio_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/OH/county/D.json -o input/state_results/ohio_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/OK/county/R.json -o input/state_results/oklahoma_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/OK/county/D.json -o input/state_results/oklahoma_democrat.json
 	curl http://data.cnn.com/ELECTION/2016primary/SC/county/R.json -o input/state_results/south_carolina_republican.json
 	curl http://data.cnn.com/ELECTION/2016primary/SC/county/D.json -o input/state_results/south_carolina_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/TN/county/R.json -o input/state_results/tennessee_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/TN/county/D.json -o input/state_results/tennessee_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/TX/county/R.json -o input/state_results/texas_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/TX/county/D.json -o input/state_results/texas_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/UT/county/S.json -o input/state_results/utah_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/UT/county/E.json -o input/state_results/utah_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/VT/county/R.json -o input/state_results/vermont_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/VT/county/D.json -o input/state_results/vermont_democrat.json
+	curl http://data.cnn.com/ELECTION/2016primary/VA/county/R.json -o input/state_results/virginia_republican.json
+	curl http://data.cnn.com/ELECTION/2016primary/VA/county/D.json -o input/state_results/virginia_democrat.json
+
 	curl https://numeracy.co/projects/2n9KPEk6ShS/versions/2?format=xlsx -o input/state_results/new_hampshire.xlsx
 	touch input/state_results/.sentinel
 
