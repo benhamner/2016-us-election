@@ -4,12 +4,13 @@ import pandas as pd
 
 def json_to_dataframe(data):
     return pd.DataFrame([[county["name"],
-                         candidate["fname"]+" "+candidate["lname"],
-                         candidate["votes"],
-                         float(candidate["pctDecimal"])/100]
+                          county["co_id"],
+                          candidate["fname"]+" "+candidate["lname"],
+                          candidate["votes"],
+                          float(candidate["pctDecimal"])/100]
                         for county in data["counties"]
                         for candidate in county["race"]["candidates"]],
-                        columns=["county", "candidate", "votes", "fraction_votes"])
+                        columns=["county", "fips", "candidate", "votes", "fraction_votes"])
 
 completed_races = [["Alabama",        "AL", "Republican"],
                    ["Alabama",        "AL", "Democrat"],
@@ -157,12 +158,12 @@ new_hampshire_data["state_abbreviation"] = "NH"
 new_hampshire_data = new_hampshire_data.rename(columns={"Votes": "votes", "County": "county", "Candidate": "candidate"})
 results.append(new_hampshire_data)
 
-county_fips = pd.read_csv("input/county_fips.csv")
+#county_fips = pd.read_csv("input/county_fips.csv")
 
 primary_results = pd.concat(results, ignore_index=True)
-primary_results["polyname"] = [primary_results.ix[i, "state"].lower() + "," + primary_results.ix[i, "county"].lower()
-                               for i in range(len(primary_results))]
-primary_results = primary_results.merge(county_fips, on="polyname")
+#primary_results["polyname"] = [primary_results.ix[i, "state"].lower() + "," + primary_results.ix[i, "county"].lower()
+#                               for i in range(len(primary_results))]
+#primary_results = primary_results.merge(county_fips, on="polyname")
 primary_results = primary_results[["state","state_abbreviation","county","fips","party","candidate","votes","fraction_votes"]]
 primary_results = primary_results.sort_values(["state", "party", "county", "candidate"])
 primary_results.to_csv("output/primary_results.csv", index=False)
