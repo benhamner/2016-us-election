@@ -108,6 +108,14 @@ input/county_shapefiles/.sentinel:
 	cd input/county_shapefiles; unzip \*.zip
 	touch input/county_shapefiles/.sentinel
 
+input/district_shapefiles/.sentinel:
+	mkdir -p input/district_shapefiles
+	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_cd114_500k.zip -o input/district_shapefiles/500k.zip
+	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_cd114_5m.zip   -o input/district_shapefiles/5m.zip
+	curl http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_cd114_20m.zip  -o input/district_shapefiles/20m.zip
+	cd input/district_shapefiles; unzip \*.zip
+	touch input/district_shapefiles/.sentinel
+
 # These links no longer work
 #input/county_facts/.sentinel:
 #	mkdir -p input/county_facts
@@ -120,7 +128,7 @@ input/county_shapefiles/.sentinel:
 #	Rscript -e 'library(maps);library(readr);data(county.fips);write_csv(county.fips, "input/county_fips.csv")'
 
 #input: input/county_shapefiles/.sentinel input/county_facts/.sentinel input/state_results/.sentinel input/county_fips.csv
-input: input/county_shapefiles/.sentinel input/state_results/.sentinel 
+input: input/county_shapefiles/.sentinel input/state_results/.sentinel input/district_shapefiles/.sentinel
 
 output/primary_results.csv: input/state_results/.sentinel
 	mkdir -p output
@@ -158,7 +166,13 @@ output/county_shapefiles/cb_2014_us_county_500k.shp: input/county_shapefiles/.se
 	rm output/county_shapefiles/*.zip
 	rm output/county_shapefiles/.sentinel
 
-output/hashes.txt: output/database.sqlite output/county_shapefiles/cb_2014_us_county_500k.shp
+output/county_shapefiles/cb_2014_us_cd114_500k.shp: input/district_shapefiles/.sentinel
+	mkdir -p output/district_shapefiles
+	cp -r input/district_shapefiles output/
+	rm output/district_shapefiles/*.zip
+	rm output/district_shapefiles/.sentinel
+
+output/hashes.txt: output/database.sqlite output/county_shapefiles/cb_2014_us_county_500k.shp output/county_shapefiles/cb_2014_us_cd114_500k.shp
 	-rm output/hashes.txt
 	echo "Current git commit:" >> output/hashes.txt
 	git rev-parse HEAD >> output/hashes.txt
@@ -168,6 +182,7 @@ output/hashes.txt: output/database.sqlite output/county_shapefiles/cb_2014_us_co
 	md5 output/county_shapefiles/* >> output/hashes.txt
 	md5 input/state_results/* >> output/hashes.txt
 	md5 input/county_shapefiles/* >> output/hashes.txt
+	md5 input/district_shapefiles/* >> output/hashes.txt
 	md5 input/county_facts_saved/* >> output/hashes.txt
 hashes: output/hashes.txt
 
